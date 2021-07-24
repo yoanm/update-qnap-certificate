@@ -1,7 +1,6 @@
 #!/bin/bash
-echo "[$(date)] Starting";
 
-USAGE_PARAMS="\"Certificate filepath\" \"Key filepath\"";
+USAGE_PARAMS="\"Certificate filepath\" \"Key filepath\" [--quiet]";
 STUNNEL_PATH="/etc/stunnel";
 STUNNEL_TMP_PATH="${STUNNEL_PATH}/tmp_cert_file";
 CERT_DEST_FILEPATH="${STUNNEL_PATH}/backup.cert.def";
@@ -13,14 +12,26 @@ if [[ -z $1 ]] || [[ -z $2 ]]; then
 else
 	CERT_FILEPATH="$1";
 	KEY_FILEPATH="$2";
+	QUIET=false;
+	if [ "$3" = "--quiet" ] ; then
+		QUIET=true
+	fi
+fi
+
+if [ "$QUIET" = false ] ; then
+	echo "[$(date)] Starting"
 fi
 
 if [[ ! -f $CERT_FILEPATH ]]; then
-	echo "${CERT_FILEPATH} not found !";
+	if [ "$QUIET" = false ] ; then
+		echo "${CERT_FILEPATH} not found !";
+	fi
 	exit 2;
 fi
 if [[ ! -f $KEY_FILEPATH ]]; then
-	echo "${KEY_FILEPATH} not found !";
+	if [ "$QUIET" = false ] ; then
+		echo "${KEY_FILEPATH} not found !";
+	fi
 	exit 2;
 fi
 
