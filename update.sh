@@ -66,7 +66,7 @@ fi
 
 
 echo "Generating certificate files";
-/etc/init.d/stunnel.sh generate_cert_key
+/etc/init.d/stunnel.sh prepare_cert_key
 if [[ $? -ne 0 ]]; then
 	echo "Error during certificate files generation !"; 
 	exit 5;
