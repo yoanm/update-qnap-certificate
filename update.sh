@@ -3,8 +3,8 @@
 USAGE_PARAMS="\"Certificate filepath\" \"Key filepath\" [--quiet]";
 STUNNEL_PATH="/etc/stunnel";
 STUNNEL_TMP_PATH="${STUNNEL_PATH}/tmp_cert_file";
-CERT_DEST_FILEPATH="${STUNNEL_PATH}/backup.cert.def";
-KEY_DEST_FILEPATH="${STUNNEL_PATH}/backup.key.def";
+CERT_DEST_FILEPATH="${STUNNEL_PATH}/backup.cert";
+KEY_DEST_FILEPATH="${STUNNEL_PATH}/backup.key";
 
 if [[ -z $1 ]] || [[ -z $2 ]]; then
 	echo "Usage: $0 or $0 ${USAGE_PARAMS}";
